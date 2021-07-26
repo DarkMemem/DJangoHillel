@@ -1,5 +1,5 @@
 # import django_filters
-
+import django_filters
 from django.forms import ModelForm
 from django.core.validators import ValidationError # noqa
 
@@ -16,7 +16,6 @@ class TeachersCreateForm(ModelForm):
             'address',
             'email',
             'phone_number',
-            'groups_number',
         ]
 
     @staticmethod
@@ -58,5 +57,14 @@ class TeachersUpdateForm(ModelForm):
             'address',
             'email',
             'phone_number',
-            'groups_number',
         ]
+
+
+class TeachersFilter(django_filters.FilterSet):
+    class Meta:
+        model = Teachers
+        fields = {
+            'age': ['lt', 'gt'],
+            'first_name': ['exact', 'icontains'],
+            'last_name': ['exact', 'startswith']
+        }
