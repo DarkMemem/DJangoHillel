@@ -17,7 +17,7 @@ class Teachers(models.Model):
     last_name = models.CharField(max_length=20, null=False, validators=[
         MinLengthValidator(2)
     ])
-    age = models.IntegerField(default=18, null=True)
+    age = models.IntegerField(default=19, null=True)
     address = models.CharField(max_length=60, null=True)
     email = models.EmailField(max_length=50, null=False)
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=False)
