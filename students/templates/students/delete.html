@@ -3,15 +3,15 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    <title>Delete teacher</title>
+    <title>Delete student</title>
 {% endblock %}
 
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        {{ form | crispy }}
-        <p>Are you sure to delete {{teacher.first_name}} {{teacher.last_name}}?</p>
+        {{form | crispy}}
+        <p>Are you sure to delete {{students.first_name}} {{students.last_name}}?</p>
         <input class="btn btn-danger mt-3"  type="submit" value="Delete">
-        <a class="btn btn-primary mt-3"  href="{% url 'teachers:list' %}">Cancel</a>
+        <a class="btn btn-primary mt-3"  href="{% url 'students:list' %}">Cancel</a>
     </form>
 {% endblock %}
