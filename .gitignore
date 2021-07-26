@@ -3,4 +3,5 @@ env/
 *.pyc
 django_hell/
 teachers/migrations
+students/migrations
 groups/migrations
