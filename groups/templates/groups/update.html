@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update groups
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input class="btn btn-primary mt-3" type="submit" value="Update">
+        <a class="btn btn-primary mt-3" href="{% url 'groups:list' %}">Cancel</a>
+    </form>
+{% endblock %}

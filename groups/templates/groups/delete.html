@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Delete groups
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <p>Are you sure to delete {{teacher.first_name}} {{teacher.last_name}}?</p>
+        <input class="btn btn-danger mt-3"  type="submit" value="Delete">
+        <a class="btn btn-primary mt-3"  href="{% url 'groups:list' %}">Cancel</a>
+    </form>
+{% endblock %}
