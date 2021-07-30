@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'students',
     'teachers',
     'groups',
+    'courses',
     'debug_toolbar',
     'crispy_forms',
 ]
