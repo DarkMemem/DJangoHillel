@@ -1,3 +1,4 @@
+
 from django.db import models
 
 from core.models import Person
@@ -10,3 +11,4 @@ class Teachers(Person):
     @classmethod
     def _generate(cls):
         super()._generate()
+
