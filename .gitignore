@@ -1,3 +1,4 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -132,4 +133,10 @@ buffer.txt
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
-.flake8
+
+media/
+static/
+
+Notes.md
+passwords.py
+django_hell/
