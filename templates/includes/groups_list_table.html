@@ -1,0 +1,22 @@
+<table class="table table-hover">
+    <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>Start date</th>
+        <th>Lesson count</th>
+        <th>Lesson passed</th>
+        <th><i class="bi bi-vector-pen"></i></th>
+        <th><i class="bi bi-trash"></i></th>
+    </tr>
+    {% for group in obj_filter.qs %}
+    <tr>
+        <td> {{ forloop.counter }} </td>
+        <td> {{ group.name }} </td>
+        <td> {{ group.start }} </td>
+        <td> {{ group.lesson_count }} </td>
+        <td> {{ group.lesson_passed }} </td>
+        <td><a href="{% url 'groups:update' group.id %}">EDIT</a></td>
+        <td><a href="{% url 'groups:delete' group.id %}">DELETE</a></td>
+    </tr>
+    {% endfor %}
+</table>

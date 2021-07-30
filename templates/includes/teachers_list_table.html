@@ -7,7 +7,6 @@
             <th>Phone number</th>
             <th>Age</th>
             <th>Birthdate</th>
-            <th>Group</th>
             <th><i class="bi bi-vector-pen"></i></th>
             <th><i class="bi bi-trash"></i></th>
         </tr>
@@ -20,7 +19,6 @@
             <td>{{ teacher.phone_number }}</td>
             <td>{{ teacher.age }}</td>
             <td>{{ teacher.birthdate }}</td>
-            <td>{{ teacher.groups_number }}</td>
             <td><a href="{% url 'teachers:update' teacher.id %}">EDIT</a></td>
             <td><a href="{% url 'teachers:delete' teacher.id %}">DELETE </a></td>
         </tr>
