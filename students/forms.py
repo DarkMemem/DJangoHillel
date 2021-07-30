@@ -1,25 +1,13 @@
 import django_filters
 from django.forms import ModelForm
-from django.core.validators import ValidationError # noqa
 
 from students.models import Students
 
 
-class StudentsCreateForm(ModelForm):
+class StudentsBaseForm(ModelForm):
     class Meta:
         model = Students
-        fields = [
-            'first_name',
-            'last_name',
-            'age',
-            'address',
-            'email',
-            'phone_number',
-            'groups_number',
-            'birthdate',
-            'enroll_date',
-            'graduate_date'
-        ]
+        fields = '__all__'
 
     @staticmethod
     def normalize_name(value):
@@ -50,21 +38,12 @@ class StudentsCreateForm(ModelForm):
         return result
 
 
-class StudentsUpdateForm(ModelForm):
-    class Meta:
-        model = Students
-        fields = [
-            'first_name',
-            'last_name',
-            'age',
-            'address',
-            'email',
-            'phone_number',
-            'groups_number',
-            'birthdate',
-            'enroll_date',
-            'graduate_date'
-        ]
+class StudentsCreateForm(StudentsBaseForm):
+    pass
+
+
+class StudentsUpdateForm(StudentsBaseForm):
+    pass
 
 
 class StudentsFilter(django_filters.FilterSet):

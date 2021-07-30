@@ -8,7 +8,7 @@ from students.models import Students
 
 def get_students(request):
 
-    students = Students.objects.all()
+    students = Students.objects.all().select_related('groups_number')
 
     obj_filter = StudentsFilter(data=request.GET, queryset=students)
 
@@ -75,7 +75,5 @@ def delete_student(request, pk):
     return render(
         request=request,
         template_name='students/delete.html',
-        context={
-            'students': students
-        }
+        context={'students': students}
     )

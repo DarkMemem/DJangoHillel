@@ -3,13 +3,18 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
+Create groups
+{% endblock %}
+
+{% block header %}
     Create groups
 {% endblock %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form | crispy }}
-      <input class="btn btn-primary mt-3"  type="submit" value="Save">
-    </form>
+<form method="post">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <input class="btn btn-primary mt-3" type="submit" value="Create">
+    <a class="btn btn-primary mt-3"  href="{% url 'groups:list' %}">Cancel</a>
+</form>
 {% endblock %}

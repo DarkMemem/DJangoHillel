@@ -4,26 +4,18 @@ from django.forms import ModelForm
 from groups.models import Group
 
 
-class GroupCreateForm(ModelForm):
+class GroupBaseForm(ModelForm):
     class Meta:
         model = Group
-        fields = [
-            'name',
-            'start',
-            'lesson_count',
-            'lesson_passed',
-        ]
+        fields = '__all__'
 
 
-class GroupUpdateForm(ModelForm):
-    class Meta:
-        model = Group
-        fields = [
-            'name',
-            'start',
-            'lesson_count',
-            'lesson_passed',
-        ]
+class GroupCreateForm(GroupBaseForm):
+    pass
+
+
+class GroupUpdateForm(GroupBaseForm):
+    pass
 
 
 class GroupFilter(django_filters.FilterSet):
