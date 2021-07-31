@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+Courses list
+{% endblock %}
+
+{% block header %}
+Courses list
+{% endblock %}
+
+
+{% block content %}
+
+<form method="get">
+    {{ obj_filter.form | crispy }}
+    <input class="btn btn-success mb-3 mt-3" type="submit" value="Search">
+</form>
+
+<p><strong>Count of group: {{ obj_filter.qs.count }}</strong></p>
+
+{% with list_object=obj_list %}
+    {% include 'includes/courses_list_table.html' %}
+{% endwith %}
+{% endblock %}
