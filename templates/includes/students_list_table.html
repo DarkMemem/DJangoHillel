@@ -11,13 +11,13 @@
         <th><i class="bi bi-vector-pen"></i></th>
         <th><i class="bi bi-trash"></i></th>
     </tr>
-    {% for students in obj_filter.qs %}
+    {% for students in list_objects %}
     <tr>
         <td>{{ forloop.counter }} </td>
         <td>{{ students.first_name }}</td>
         <td>{{ students.last_name }}</td>
         <td>{{ students.email }}</td>
-        <td>{{ students.phone_number }}</td>
+        <td>{% if students.phone_number %}{{ students.phone_number }}{% endif %}</td>
         <td>{{ students.age }}</td>
         <td>{{ students.birthdate }}</td>
         <td>{% if students.groups_number  %}{{ students.groups_number }}{% endif %}</td>

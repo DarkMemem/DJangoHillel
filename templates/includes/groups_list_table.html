@@ -8,7 +8,7 @@
         <th><i class="bi bi-vector-pen"></i></th>
         <th><i class="bi bi-trash"></i></th>
     </tr>
-    {% for group in obj_filter.qs %}
+    {% for group in list_objects %}
     <tr>
         <td> {{ forloop.counter }} </td>
         <td> {{ group.name }} </td>

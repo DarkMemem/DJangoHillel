@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+Sing Up
+{% endblock %}
+
+{% block header %}
+User Login
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form | crispy }}
+
+    <a href="{% url 'password_reset' %}">If you forgot your password, we can change it for you.</a>
+    <div>
+        <input class="btn btn-primary mt-3 mb-3" type="submit" value="Sing In">
+        <a class="btn btn-primary mt-3 mb-3 " href="{% url 'accounts:registration' % }">Sing Up</a>
+    </div>
+</form>
+{% endblock %}

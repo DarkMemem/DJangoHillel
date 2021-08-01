@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+Sing Out
+{% endblock %}
+
+{% block header %}
+{{ user.name }} Sing Out
+{% endblock %}
+
+{% block content %}
+    <a class="btn btn-success mb-3" href="{% url 'index' %}">Sing In</a>
+{% endblock %}

@@ -15,7 +15,7 @@ class Person(models.Model):
     last_name = models.CharField(max_length=60)
     age = models.IntegerField(default=18, null=True)
     email = models.EmailField(max_length=50, null=False)
-    phone_number = models.CharField(max_length=15, unique=True, blank=True, null=False)
+    phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
     birthdate = models.DateField(default=datetime.date.today)
 
     def __str__(self):
