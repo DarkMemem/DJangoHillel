@@ -14,7 +14,7 @@ Delete teacher
 <form method="post">
     {% csrf_token %}
     {{ form | crispy }}
-    <p>Are you sure to delete {{teacher.first_name}} {{teacher.last_name}}?</p>
+    <p>Are you sure to delete {{teachers.first_name}} {{teachers.last_name}}?</p>
     <input class="btn btn-danger mt-3"  type="submit" value="Delete">
     <a class="btn btn-primary mt-3"  href="{% url 'teachers:list' %}">Cancel</a>
 </form>
