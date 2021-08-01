@@ -14,13 +14,13 @@ Groups list
 {% block content %}
 
 <form method="get">
-    {{ obj_filter.form | crispy }}
+    {{ object_list.form | crispy }}
     <input class="btn btn-success mb-3 mt-3" type="submit" value="Search">
 </form>
 
-<p><strong>Count of group: {{ obj_filter.qs.count }}</strong></p>
+<p><strong>Count of group: {{ object_list.qs.count }}</strong></p>
 
-{% with list_object=obj_filter.qs %}
+{% with list_objects=object_list.qs %}
     {% include 'includes/groups_list_table.html' %}
 {% endwith %}
 {% endblock %}

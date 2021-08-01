@@ -15,7 +15,8 @@ class StudentsBaseForm(ModelForm):
 
     @staticmethod
     def normalize_phone_number(value):
-        return ''.join(c for c in value if c.isdigit() or c == '+')
+        if value is not None:
+            return ''.join(c for c in value if c.isdigit() or c == '+')
 
     def clean_first_name(self):
         first_name = self.cleaned_data['first_name']

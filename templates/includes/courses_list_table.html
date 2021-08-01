@@ -7,7 +7,7 @@
         <th><i class="bi bi-vector-pen"></i></th>
         <th><i class="bi bi-trash"></i></th>
     </tr>
-    {% for course in obj_filter.qs %}
+    {% for course in list_objects %}
     <tr>
         <td>{{ forloop.counter }}</td>
         <td>{{ course.name }}</td>
