@@ -7,9 +7,9 @@ Sing Out
 {% endblock %}
 
 {% block header %}
-{{ user.name }} Sing Out
+Sing Out
 {% endblock %}
 
 {% block content %}
-    <a class="btn btn-success mb-3" href="{% url 'index' %}">Sing In</a>
+    <a class="btn btn-success mb-3" href="{% url 'accounts:login' %}">Sing In</a>
 {% endblock %}
