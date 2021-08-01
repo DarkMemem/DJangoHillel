@@ -8,8 +8,8 @@
         <th>Age</th>
         <th>Birthdate</th>
         <th>Group</th>
-        <th><i class="bi bi-vector-pen"></i></th>
-        <th><i class="bi bi-trash"></i></th>
+        {% if user.is_authenticated %} <th><i class="bi bi-vector-pen"></i></th>
+        <th><i class="bi bi-trash"></i></th> {% endif %}
     </tr>
     {% for students in list_objects %}
     <tr>
@@ -21,8 +21,8 @@
         <td>{{ students.age }}</td>
         <td>{{ students.birthdate }}</td>
         <td>{% if students.groups_number  %}{{ students.groups_number }}{% endif %}</td>
-        <td><a href="{% url 'students:update' students.id %}">EDIT</a></td>
-        <td><a href="{% url 'students:delete' students.id %}">DELETE</a></td>
+        {% if user.is_authenticated %} <td><a href="{% url 'students:update' students.id %}">EDIT</a></td>
+        <td><a href="{% url 'students:delete' students.id %}">DELETE</a></td> {% endif %}
     </tr>
     {% endfor %}
 </table>

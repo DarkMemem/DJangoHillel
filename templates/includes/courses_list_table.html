@@ -4,8 +4,8 @@
         <th>Course</th>
         <th>Create date</th>
         <th>Update date</th>
-        <th><i class="bi bi-vector-pen"></i></th>
-        <th><i class="bi bi-trash"></i></th>
+        {% if user.is_authenticated %} <th><i class="bi bi-vector-pen"></i></th>
+        <th><i class="bi bi-trash"></i></th> {% endif %}
     </tr>
     {% for course in list_objects %}
     <tr>
@@ -13,8 +13,8 @@
         <td>{{ course.name }}</td>
         <td>{{ course.create_datetime }}</td>
         <td>{{ course.update_datetime }}</td>
-        <td><a href="{% url 'courses:update' course.id %}">EDIT</a></td>
-        <td><a href="{% url 'courses:delete' course.id %}">DELETE</a></td>
+        {% if user.is_authenticated %}<td><a href="{% url 'courses:update' course.id %}">EDIT</a></td>
+        <td><a href="{% url 'courses:delete' course.id %}">DELETE</a></td> {% endif %}
     </tr>
     {% endfor %}
 </table>

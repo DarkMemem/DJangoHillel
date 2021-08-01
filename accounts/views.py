@@ -1,7 +1,10 @@
+from django.contrib import messages
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy, reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .forms import AccountRegistrationForm, AccountUpdateForm
 
@@ -23,12 +26,18 @@ class AccountLoginView(LoginView):
 
         return reverse('index')
 
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(self.request, f'User {self.request.user} has successfully logged in.')
+
+        return result
+
 
 class AccountLogoutView(LogoutView):
     template_name = 'accounts/logout.html'
 
 
-class AccountUpdateView(UpdateView):
+class AccountUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'accounts/profile_update.html'
     success_url = reverse_lazy('index')

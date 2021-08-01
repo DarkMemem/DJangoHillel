@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from students.forms import StudentsUpdateForm, StudentsCreateForm, StudentsFilter
 from students.models import Students
@@ -16,21 +18,39 @@ class StudentListView(ListView):
         )
 
 
-class StudentCreateView(CreateView):
+class StudentCreateView(LoginRequiredMixin, CreateView):
     model = Students
     form_class = StudentsCreateForm
     success_url = reverse_lazy('students:list')
     template_name = 'students/create.html'
 
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(self.request, f"Students {form.cleaned_data['first_name']} was successfully created.")
 
-class StudentUpdateView(UpdateView):
+        return result
+
+
+class StudentUpdateView(LoginRequiredMixin, UpdateView):
     model = Students
     form_class = StudentsUpdateForm
     success_url = reverse_lazy('students:list')
     template_name = 'students/update.html'
 
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(self.request, f"Student {form.cleaned_data['first_name']} was successfully update.")
 
-class StudentDeleteView(DeleteView):
+        return result
+
+
+class StudentDeleteView(LoginRequiredMixin, DeleteView):
     model = Students
     success_url = reverse_lazy('students:list')
     template_name = 'students/delete.html'
+
+    def delete(self, *args, **kwargs):
+        result = super(DeleteView, self).delete(*args, **kwargs)
+        messages.success(self.request, f"Student  was successfully deleted.")
+
+        return result
