@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'courses',
     'debug_toolbar',
     'crispy_forms',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+EMAIL_PORT = 1025
