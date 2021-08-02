@@ -8,14 +8,24 @@ from students.models import Students
 
 
 class StudentListView(ListView):
+    paginate_by = 20
     model = Students
     template_name = 'students/list.html'
 
-    def get_queryset(self):
+    def get_filter(self):
         return StudentsFilter(
             data=self.request.GET,
-            queryset=self.model.objects.all()
+            queryset=self.model.objects.all().select_related('groups_number')
         )
+
+    def get_queryset(self):
+        return self.get_filter().qs
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_filter'] = self.get_filter()
+
+        return context
 
 
 class StudentCreateView(LoginRequiredMixin, CreateView):

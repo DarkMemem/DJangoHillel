@@ -13,7 +13,7 @@
     </tr>
     {% for students in list_objects %}
     <tr>
-        <td>{{ forloop.counter }} </td>
+        <td>{{ page_obj.start_index|add:forloop.counter0 }}</td>
         <td>{{ students.first_name }}</td>
         <td>{{ students.last_name }}</td>
         <td>{{ students.email }}</td>

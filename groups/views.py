@@ -8,14 +8,24 @@ from groups.models import Group
 
 
 class GroupListView(ListView):
+    paginate_by = 20
     model = Group
     template_name = 'groups/list.html'
 
-    def get_queryset(self):
+    def get_filter(self):
         return GroupFilter(
             data=self.request.GET,
-            queryset=Group.objects.all()
+            queryset=self.model.objects.all().select_related('courses')
         )
+
+    def get_queryset(self):
+        return self.get_filter().qs
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_filter'] = self.get_filter()
+
+        return context
 
 
 class GroupCreateView(LoginRequiredMixin, CreateView):
