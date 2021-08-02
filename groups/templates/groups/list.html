@@ -10,17 +10,20 @@ Groups list
     Groups list
 {% endblock %}
 
-
 {% block content %}
 
 <form method="get">
-    {{ object_list.form | crispy }}
+    {{ object_filter.form | crispy }}
     <input class="btn btn-success mb-3 mt-3" type="submit" value="Search">
 </form>
 
-<p><strong>Count of group: {{ object_list.qs.count }}</strong></p>
 
-{% with list_objects=object_list.qs %}
+{% with list_objects=object_list %}
     {% include 'includes/groups_list_table.html' %}
 {% endwith %}
+
+{% if is_paginated %}
+    {% include 'includes/paginator.html' %}
+{% endif %}
+
 {% endblock %}
