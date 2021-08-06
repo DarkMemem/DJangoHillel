@@ -50,7 +50,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% if user.is_authenticated %}
-             {{ user.username }}
+             <img class="rounded-circle" src="{{ user.profile.avatar.url }}" width="40px" height="40px">
             {% else %}
               Account
             {% endif %}
