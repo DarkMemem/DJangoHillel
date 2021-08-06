@@ -10,7 +10,7 @@
     </tr>
     {% for group in list_objects %}
     <tr>
-        <td> {{ forloop.counter }} </td>
+        <td> {{ page_obj.start_index|add:forloop.counter0 }} </td>
         <td> {{ group.name }} </td>
         <td> {{ group.start }} </td>
         <td> {{ group.lesson_count }} </td>
